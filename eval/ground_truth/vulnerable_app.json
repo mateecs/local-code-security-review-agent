@@ -1,0 +1,19 @@
+{
+  "target": "examples/vulnerable_app",
+  "vulns": [
+    {"id": "V01", "cwe": "CWE-798", "file": "app.py", "match": "app.secret_key = \"super-secret-key-123\"", "description": "Hardcoded Flask secret key"},
+    {"id": "V02", "cwe": "CWE-798", "file": "app.py", "match": "STRIPE_API_KEY = \"sk_live_", "description": "Hardcoded Stripe live key"},
+    {"id": "V03", "cwe": "CWE-327", "file": "app.py", "match": "hashlib.md5(password.encode())", "description": "MD5 used for password hashing"},
+    {"id": "V04", "cwe": "CWE-89", "file": "app.py", "match": "row = db.execute(query).fetchone()", "description": "SQL injection via f-string query (login)"},
+    {"id": "V05", "cwe": "CWE-89", "file": "app.py", "match": "WHERE name LIKE '%\" + term", "description": "SQL injection via concatenation (search)"},
+    {"id": "V06", "cwe": "CWE-79", "file": "app.py", "match": "render_template_string(\"<h1>Hello \"", "description": "Reflected XSS / SSTI"},
+    {"id": "V07", "cwe": "CWE-22", "file": "app.py", "match": "send_file(os.path.join(UPLOAD_DIR, filename))", "description": "Path traversal in download"},
+    {"id": "V08", "cwe": "CWE-78", "file": "app.py", "match": "\"ping -c 1 \" + host, shell=True", "description": "OS command injection"},
+    {"id": "V09", "cwe": "CWE-306", "file": "app.py", "match": "def list_users():", "description": "Admin endpoint without authentication"},
+    {"id": "V10", "cwe": "CWE-306", "file": "app.py", "match": "def delete_user():", "description": "Admin endpoint without authentication"},
+    {"id": "V11", "cwe": "CWE-502", "file": "app.py", "match": "pickle.loads(request.get_data())", "description": "Insecure deserialization"},
+    {"id": "V12", "cwe": "CWE-295", "file": "app.py", "match": "requests.get(url, verify=False)", "description": "TLS verification disabled"},
+    {"id": "V13", "cwe": "CWE-918", "file": "app.py", "match": "requests.get(url, verify=False)", "description": "SSRF: user-controlled URL fetched server-side"},
+    {"id": "V14", "cwe": "CWE-489", "file": "app.py", "match": "app.run(host=\"0.0.0.0\", debug=True)", "description": "Debug mode on, bound to all interfaces"}
+  ]
+}
