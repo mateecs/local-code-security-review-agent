@@ -1,4 +1,4 @@
-# secagent: a local AI security-review agent
+# Secagent: a local AI security-review agent
 
 `secagent` reads a codebase **you own or are authorised to test** and reports likely vulnerabilities, each with the
 exact code as evidence, a severity, a CWE id, a suggested fix and a verification status. It runs entirely on your
